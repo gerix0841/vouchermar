@@ -38,7 +38,7 @@ class VoucherRepoTest {
 
 	@Test
 	void test_DeleteVoucher(){
-		Voucher voucher = new Voucher(0, "222222222", 5, LocalDate.now().plusDays(30));
+		Voucher voucher = new Voucher(0, "333333333", 5, LocalDate.now().plusDays(30));
 		Voucher savedVoucher = repository.save(voucher);
 
 		repository.deleteById(savedVoucher.getId());
