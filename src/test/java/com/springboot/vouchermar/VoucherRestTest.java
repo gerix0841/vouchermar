@@ -37,22 +37,22 @@ class VoucherRestTest {
 
 	@Test
 	void test_createVoucher() throws Exception {
-		Voucher voucher = new Voucher(0,"111111111",3,LocalDate.now().plusDays(10));
+		Voucher voucher = new Voucher(0,"444444444",3,LocalDate.now().plusDays(10));
 
 		mockMvc.perform(post("/api/vouchers")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(voucher)))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.code").value("111111111"));
+				.andExpect(jsonPath("$.code").value("444444444"));
 	}
 
 	@Test
 	void test_RedeemVoucher() throws Exception {
-		Voucher voucher = new Voucher(0,"222222222",1,LocalDate.now().plusDays(10));
+		Voucher voucher = new Voucher(0,"555555555",1,LocalDate.now().plusDays(10));
 		voucherRepository.save(voucher);
 
 		mockMvc.perform(post("/api/vouchers/redeem")
-						.param("code", "222222222"))
+						.param("code", "555555555"))
 				.andExpect(status().isOk())
 				.andExpect(content().string("Voucher redeemed successfully!"));
 	}
